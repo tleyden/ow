@@ -21,11 +21,11 @@ type ErrResponse struct {
 	Error string `json:"error"`
 }
 
-type callback func(json.RawMessage) (interface{}, error)
+type OpenWhiskCallback func(json.RawMessage) (interface{}, error)
 
-var action callback
+var action OpenWhiskCallback
 
-func RegisterAction(cb callback) {
+func RegisterAction(cb OpenWhiskCallback) {
 	action = cb
 	setupHandlers()
 }
